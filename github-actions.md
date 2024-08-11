@@ -69,4 +69,4 @@ jobs:
           person: 'Batman'
 
 ```
-![sCREENSHOT](image.png)
+![alt text](image-1.png)

@@ -4,12 +4,14 @@
   "description": "- initialize the `actions.yml`\r - Add the name , description of the actions\r - Then you have to mention what kind of the action it is , their are three types of actions right now javascript actions , docker images actions and the last one is `composite actions`.\r Like this `action.yml`: \r ```yml\r name: Deepak Understanding Github Actions\r description: Understanding Github Actions\r runs:\r   using: node16\r   main: src/index.js\r ```",
   "main": "index.js",
   "scripts": {
+    "build": "node esbuild.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.10.1"
+    "@actions/core": "^1.10.1",
+    "esbuild": "^0.23.0"
   }
 }

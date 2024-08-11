@@ -12,6 +12,8 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: npm run build
+      - run: rm -rf node_modules
       - uses: ./ # Uses an action in the root directory without input this time
       - uses: ./ # Uses an action in the root directory with input this time
         with:

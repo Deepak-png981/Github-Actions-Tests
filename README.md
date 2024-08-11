@@ -102,3 +102,59 @@ jobs:
         with:
           person: 'Batman'
 ```
+
+
+
+## Utilization of github-action by some other actions
+Now the problem is github don't allow us to do `npm install` once our github actions is used by some other workflow or by some other repository. Then how can we ship our actions to those workflows or repos? 
+1. Commit the node_modules folder. (The most trash way !!)
+2. Use a bundler that bundles everything in single javascript file and then ship that js file to the other workflows or repos (like esbuild).
+
+We are using esbuild to bundle our code and then ship it to the other workflows or repos because it supports typescript and it is very fast.
+We need to create the `esbuild.cjs` file in the root directory and then we have to write the following code in it.
+```json
+{
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.10"
+  }
+}
+```
+Update the `action.yml` to use the dist/index.js file.
+```yml
+name: Deepak Understanding Github Actions
+description: Understanding Github Actions
+inputs:
+  person:
+    description: 'Person to greet'
+    required: true
+    default: 'Deepak'
+runs:
+  using: node16
+  main: dist/index.js
+```
+Update the `test.yml` to run the build script before running the action then delete the node_modules and then use the dist/index.js file in the workflow.
+```yml
+name: Test
+on:
+  push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run build ## to build the code
+      - run: rm -rf node_modules ## to delete the node_modules
+      - uses: ./
+      - uses: ./ 
+        with:
+          person: 'Batman'
+```

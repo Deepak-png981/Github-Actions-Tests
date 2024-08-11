@@ -1,0 +1,5 @@
+name: Deepak Understanding Github Actions
+description: Understanding Github Actions
+runs:
+  using: node16
+  main: src/index.js

@@ -70,3 +70,13 @@ jobs:
 
 ```
 ![alt text](image-1.png)
+
+
+## Github actions toolkit
+- It is a set of tools that you can use to build your actions.
+- Like I tested the `@actions/core` to take the input from the user and then print it. It improves the readability of the code.
+```js
+const core = require('@actions/core');
+const person = core.getInput('person');
+console.log(`Hello, ${person}!`);
+```

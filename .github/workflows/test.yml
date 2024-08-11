@@ -14,4 +14,4 @@ jobs:
       - uses: ./ # Uses an action in the root directory without input this time
       - uses: ./ # Uses an action in the root directory with input this time
         with:
-          person: 'Deepak'
+          person: 'Batman'

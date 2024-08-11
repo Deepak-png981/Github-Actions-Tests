@@ -80,3 +80,25 @@ const core = require('@actions/core');
 const person = core.getInput('person');
 console.log(`Hello, ${person}!`);
 ```
+
+we have to adjust our `test.yml` to install the `@actions/core` package.
+```yml
+name: Test
+on:
+  push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - runs: npm ci ## to install the dependencies
+      - uses: ./ 
+      - uses: ./ 
+        with:
+          person: 'Batman'
+```

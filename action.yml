@@ -1,5 +1,10 @@
 name: Deepak Understanding Github Actions
 description: Understanding Github Actions
+inputs:
+  person:
+    description: 'Person to greet'
+    required: true
+    default: 'Deepak'
 runs:
   using: node16
   main: src/index.js

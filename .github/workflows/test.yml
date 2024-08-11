@@ -11,4 +11,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      - uses: ./ # Uses an action in the root directory
+      - uses: ./ # Uses an action in the root directory without input this time
+      - uses: ./ # Uses an action in the root directory with input this time
+        with:
+          person: 'Deepak'

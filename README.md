@@ -96,7 +96,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      - runs: npm ci ## to install the dependencies
+      - run: npm ci ## to install the dependencies
       - uses: ./ 
       - uses: ./ 
         with:

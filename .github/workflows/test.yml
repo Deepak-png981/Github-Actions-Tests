@@ -11,7 +11,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      - runs: npm ci
+      - run: npm ci
       - uses: ./ # Uses an action in the root directory without input this time
       - uses: ./ # Uses an action in the root directory with input this time
         with:

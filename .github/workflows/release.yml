@@ -32,4 +32,4 @@ jobs:
       - name: Run Semantic Release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }} # Ensure this PAT has the necessary scopes
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure this PAT has the necessary scopes
